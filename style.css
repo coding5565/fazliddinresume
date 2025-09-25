@@ -1,0 +1,146 @@
+/* Reset odd gaps */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Body & background */
+body, html {
+  height: 100%;
+  font-family: "Roboto Mono", monospace;
+  background: #111;
+  color: #fff;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  /* FON RASM: o'zingiz joylagan background.jpg ni ishlating.
+     Agar rasm URL ishlatsangiz: url('https://...') yozing */
+  background-image: url('cover_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: none;
+}
+
+/* Qorong'i dim/blur effekt uchun overlay */
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,6,12,0.65); /* qora-yengil shaffof qatlam */
+  backdrop-filter: blur(6px);
+  z-index: 0;
+}
+
+/* Card markaziy konteyner */
+.card {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 36px 22px 40px;
+  max-width: 920px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Avatar */
+.avatar-wrap {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  box-shadow: 0 6px 22px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03);
+  display: grid;
+  place-items: center;
+  margin-bottom: 6px;
+}
+
+.avatar {
+  width: 124px;
+  height: 124px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.06);
+  background: #222;
+}
+
+/* Name with decorative dashes */
+.name {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(28px, 6vw, 48px);
+  letter-spacing: 0.5px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  white-space: nowrap;
+  text-shadow: 0 3px 18px rgba(0,0,0,0.6);
+  margin-top: 4px;
+}
+
+/* small decorative dash style */
+.name .dash {
+  font-weight: 700;
+  opacity: 0.9;
+  font-size: 18px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* Subtitle (monospace small) */
+.subtitle {
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  opacity: 0.9;
+  margin-top: -4px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.92);
+}
+
+/* Social icons */
+.social {
+  display: flex;
+  gap: 18px;
+  margin-top: 6px;
+}
+
+.social a {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+/* Hover effects */
+.social a:hover {
+  transform: translateY(-6px) scale(1.05);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* Small screens adjustments */
+@media (max-width: 520px) {
+  .avatar-wrap { width: 110px; height: 110px; }
+  .avatar { width: 98px; height: 98px; }
+  .name { font-size: 24px; gap: 10px; }
+  .social a { width: 34px; height: 34px; font-size: 14px; }
+  .card { padding: 28px 16px 32px; }
+}
+
+/* Accessibility: focus styles */
+.social a:focus {
+  outline: 3px solid rgba(255,255,255,0.12);
+  outline-offset: 2px;
+}
